@@ -1,7 +1,7 @@
 # ProcessWire Docker Compose
 ProcessWire LAMP Server with Docker Compose.
 
-Made to quickly set up a test environment for the [ProcessWire CMS](https://github.com/processwire/processwire), but should also be suitable for use in production.
+Made to quickly set up a test environment for the [ProcessWire CMS](https://github.com/processwire/processwire), but should also be suitable for use in production. This includes all the libraries and php extensions that ProcessWire needs to work properly.
 
 ## Services
 - `php:7.4-apache`
