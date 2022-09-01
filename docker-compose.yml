@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: './docker/php'
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/var/www/html/
+    links:
+      - mariadb
+    networks:
+      lamp-network:
+        ipv4_address: 172.18.0.2
+  mariadb:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_PASSWORD=docker
+      - MYSQL_USER=docker
+      - MYSQL_DATABASE=docker
+    networks:
+      lamp-network:
+        ipv4_address: 172.18.0.3
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
+    networks:
+      lamp-network:
+        ipv4_address: 172.18.0.4
+    
+networks:
+  lamp-network:
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+          gateway: 172.18.0.1
