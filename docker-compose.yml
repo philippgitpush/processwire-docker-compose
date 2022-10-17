@@ -9,12 +9,12 @@ services:
     volumes:
       - ./html:/var/www/html/
     links:
-      - mariadb
+      - mysql
     networks:
       lamp-network:
         ipv4_address: 172.18.0.2
-  mariadb:
-    image: mariadb:latest
+  mysql:
+    image: mysql:latest
     ports:
       - 3306:3306
     volumes:
@@ -33,9 +33,9 @@ services:
       - 8080:80
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOST=mariadb
+      - PMA_HOST=mysql
     depends_on:
-      - mariadb
+      - mysql
     networks:
       lamp-network:
         ipv4_address: 172.18.0.4

@@ -9,7 +9,7 @@ For this, you need to download the [latest version or dev build](https://process
 - `php:7.4-apache`
   - IPv4 & Ports
     - `172.18.0.2`, 80:80
-- `mariadb:latest`
+- `mysql:latest`
   - IPv4 & Ports
     - `172.18.0.3`, 3306:3306
   - Environment
@@ -22,7 +22,7 @@ For this, you need to download the [latest version or dev build](https://process
     - `172.18.0.4`, 8080:80
    - Environment
       - PMA_ARBITRARY=1
-      - PMA_HOST=mariadb
+      - PMA_HOST=mysql
     
 ## Networks
 - `lamp-network`
