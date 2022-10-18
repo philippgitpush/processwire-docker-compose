@@ -10,11 +10,14 @@ RUN apt-get update && apt-get install -y \
 		libicu-dev \
 		zip \
 		locales \
+		locales-all \
 		&& docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
 		&& docker-php-ext-install -j$(nproc) gd pdo pdo_mysql zip mysqli intl
 RUN a2enmod rewrite
 
-# Locales
-RUN locale-gen C.UTF-8
-ENV LANG C.UTF-8
+# Locale
 ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+
+# Restart apache
+RUN service apache2 restart
