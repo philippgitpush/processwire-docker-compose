@@ -16,6 +16,9 @@ RUN apt-get update && apt-get install -y \
 		&& docker-php-ext-install -j$(nproc) gd pdo pdo_mysql zip mysqli intl
 RUN a2enmod rewrite && a2enmod deflate && a2enmod filter && a2enmod expires
 
+# Custom php.ini
+COPY php/custom-php.ini /usr/local/etc/php/conf.d/
+
 # Locale
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
