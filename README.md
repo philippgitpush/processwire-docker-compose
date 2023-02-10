@@ -5,7 +5,7 @@ Made to quickly set up a test environment for the [ProcessWire CMS](https://gith
 
 If you develop on Windows and go into production on Linux, the case of the database tables will not match. You need to export the database from Windows via phpmyadmin and then import it on the production machine and vice versa.
 
-You **must** bind the mysql port to 127.0.0.1 (Windows) or 172.17.0.1 (Linux / OSX) if you are working in production, otherwise the port will be accessible to the public with a weak password. The commented out bindings can be found in the `docker-compose.yml` file. The database is accessible either via `host.docker.internal` on Windows or via `172.17.0.1` on Linux / OSX.
+You **must** bind the mysql port to 127.0.0.1 (Windows) or 172.17.0.1 (Linux / OSX) if you are working in production, otherwise the port will be accessible to the public with a weak password. The commented out bindings can be found in the `docker-compose.yml` file. The database is accessible either via `host.docker.internal` on Windows or via `172.17.0.1` on Linux / OSX. Also, make sure that you **do not** expose the phpmyadmin port `8080` when you go into production.
 
 For this, you need to download the [latest version or dev build](https://processwire.com/download/core/) of ProcessWire and unzip it into the `html` folder created by docker-compose.
 
